@@ -4,17 +4,15 @@ class FileController {
 
   static downloadFile = (req, res) => {
 
-    const BASE_DIR = path.resolve('./server')
+    const BASE_DIR = path.resolve('')
     const directoryPath = BASE_DIR + "/resources/static/uploads/file.pdf";
     console.log(BASE_DIR)
+    res.setHeader('Content-Type', 'application/json');
     res.download(directoryPath, `file.pdf`, (err) => {
       if (err) {
-        res.status(500).send({
+        return res.status(500).send({
           message: "Could not download the file. " + err,
         });
-      } else {
-        res.json({ message: 'Downloading' })
-
       }
     });
   };
