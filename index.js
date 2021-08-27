@@ -24,6 +24,6 @@ MongoClient.connect(
   .then(async client => {
     await RenderInfoModel.injectDB(client)
     app.listen(port, () => {
-      console.log(`loading ${URL}`)
+      console.log(`serving ${URL}`)
     })
   })
